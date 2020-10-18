@@ -1,0 +1,75 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(rio)
+
+linkcond= "https://github.com/georginarojasj/datos2daentrega/raw/master/condiciones.csv"
+cond= import(linkcond)
+names(cond)
+```
+
+
+```{r}
+summary(cond$Desem)
+sd(cond$Desem)
+
+```
+```{r}
+summary(cond$HDI)
+
+sd(cond$HDI)
+```
+
+
+```{r}
+summary(cond$POB)
+sd(cond$POB)
+
+```
+
+BASE FINAL: 
+```{r}
+linkfinal="https://raw.githubusercontent.com/orlando-20181209/Entrega-1/master/BaseFinalmerge.csv" 
+final= import(linkfinal)
+names(final) 
+```
+
+ANALISIS BIVARIADO
+```{r}
+
+plot(final$gastosocial, final$Desem, 
+     main="Desempleo y Gasto Social", 
+     xlab="Gasto Social", 
+     ylab="Desempleo") 
+
+
+cor.test(final$gastosocial, final$Desem)
+
+```
+
+
+```{r}
+plot(final$gastosocial, final$HDI, 
+     main="Índice de desarrrollo humano y Gasto Social", 
+     xlab="Gasto Social", 
+     ylab="Índice de desarroollo humano") 
+
+
+cor.test(final$gastosocial, final$HDI)
+```
+
+
+```{r}
+plot(final$gastosocial, final$POB, 
+     main="Pobreza y Gasto Social", 
+     xlab="Gasto Social", 
+     ylab="Pobreza") 
+
+
+cor.test(final$gastosocial, final$POB)
+```
+
